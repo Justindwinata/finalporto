@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OCR Receipt Demo - Justin Dwinata</title>
+  <link rel="stylesheet" href="../../css/style.css"/>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml"/>
+  <style>
+    body{cursor:auto}.demo{min-height:100vh;padding:7rem 0;background:radial-gradient(circle at 80% 0,rgba(215,220,227,.12),transparent 30%),var(--black)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}.panel{background:var(--black-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.5rem}.receipt{background:#eee;color:#111;border-radius:8px;padding:1.2rem;font-family:var(--font-mono);line-height:1.8;box-shadow:0 18px 50px rgba(0,0,0,.35)}.table{display:grid;gap:.6rem}.row{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--border);padding-bottom:.5rem;color:var(--muted)}.scan-box{position:relative;margin-top:1rem;border:1px solid var(--border-g);border-radius:var(--r);padding:1rem;background:rgba(215,220,227,.04)}.scan-line{height:3px;background:var(--green);box-shadow:0 0 18px var(--green);animation:scan 2s ease-in-out infinite}@keyframes scan{0%,100%{transform:translateY(0)}50%{transform:translateY(96px)}}@media(max-width:800px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="demo">
+    <div class="wrap">
+      <a href="/#work" class="btn btn-o" style="margin-bottom:2rem">Kembali ke Works</a>
+      <div class="sec-tag">Static OCR Demo</div>
+      <h1 class="sec-title">OCR Receipt <em>Document Understanding.</em></h1>
+      <div class="grid">
+        <section class="panel">
+          <h2>Input Struk</h2>
+          <p class="about-text">Demo ini mensimulasikan hasil OCR dan parsing struk menjadi data yang lebih rapi.</p>
+          <div class="receipt" id="receipt">JUSTIN MART<br/>2026-07-05<br/>Kopi 18.000<br/>Roti 12.000<br/>Pajak 3.000<br/>TOTAL 33.000</div>
+          <div class="scan-box"><div class="scan-line"></div></div>
+          <button class="btn btn-g" id="parse" style="margin-top:1rem">Parse Receipt</button>
+        </section>
+        <section class="panel">
+          <h2>Hasil Terstruktur</h2>
+          <div class="table" id="out"><p class="about-text">Klik tombol parse untuk melihat merchant, tanggal, item, pajak, total, dan confidence OCR.</p></div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <script>
+    parse.onclick=()=>{out.innerHTML=['Merchant: JUSTIN MART','Tanggal: 2026-07-05','Item: Kopi, Roti','Pajak: Rp3.000','Total: Rp33.000','Confidence OCR: 94%'].map(x=>'<div class="row"><span>'+x.split(':')[0]+'</span><strong>'+x.split(':').slice(1).join(':')+'</strong></div>').join('');};
+  </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Justber Rekber Demo - Justin Dwinata</title>
+  <link rel="stylesheet" href="../../css/style.css"/>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml"/>
+  <style>
+    body{cursor:auto}.demo{min-height:100vh;padding:7rem 0;background:radial-gradient(circle at 18% 0,rgba(215,220,227,.12),transparent 30%),var(--black)}.grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:1.4rem}.panel{background:var(--black-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.5rem}.phone{max-width:340px;margin:auto;border:1px solid var(--border-g);border-radius:32px;padding:1rem;background:#070707;box-shadow:0 24px 80px rgba(0,0,0,.45)}.screen{border-radius:24px;background:#111;padding:1rem;min-height:460px}.contract{padding:1rem;border:1px solid var(--border);border-radius:var(--r);margin:.75rem 0;background:var(--black-3)}.token{font-family:var(--font-mono);color:var(--green);font-size:1.3rem}.flow{display:grid;gap:.75rem}.flow button{text-align:left;padding:1rem;border:1px solid var(--border);border-radius:var(--r);background:var(--black-3);color:var(--muted)}.flow button.on{border-color:var(--green);color:var(--green)}.status{display:inline-flex;padding:.3rem .75rem;border-radius:99px;background:rgba(215,220,227,.08);border:1px solid var(--border-g);color:var(--green);font-family:var(--font-mono);font-size:.72rem}@media(max-width:860px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="demo">
+    <div class="wrap">
+      <a href="/#work" class="btn btn-o" style="margin-bottom:2rem">Kembali ke Works</a>
+      <div class="sec-tag">Justber Flutter Flow Demo</div>
+      <h1 class="sec-title">Aplikasi Rekber <em>Justber.</em></h1>
+      <div class="grid">
+        <section class="panel">
+          <h2>Simulasi Mobile Screen</h2>
+          <p class="about-text">Alur ini mengikuti dokumentasi dan model project Flutter Justber di folder `/Users/justindwinata/Documents/bismillah Justber/`.</p>
+          <div class="phone">
+            <div class="screen">
+              <span class="status" id="status">CONTRACT CREATED</span>
+              <div class="contract">
+                <p class="about-text" style="margin-bottom:.3rem">Room Token</p>
+                <div class="token">JB-4829</div>
+              </div>
+              <div class="contract"><strong>Jual Beli Laptop</strong><p class="about-text">Harga: Rp7.500.000</p></div>
+              <div class="contract"><p id="note" class="about-text">Seller membuat contract dan membagikan token ke buyer.</p></div>
+            </div>
+          </div>
+        </section>
+        <section class="panel">
+          <h2>Flow Transaksi</h2>
+          <div class="flow">
+            <button class="on" data-status="CONTRACT CREATED" data-note="Seller membuat contract dan membagikan token room ke buyer.">1. Create Contract</button>
+            <button data-status="BUYER JOINED" data-note="Buyer memasukkan token, membaca detail transaksi, dan mulai chat dengan seller.">2. Buyer Join Room</button>
+            <button data-status="FUNDS SECURED" data-note="Buyer membayar melalui QRIS. Dana ditahan oleh sistem sampai barang dikonfirmasi.">3. QRIS Payment</button>
+            <button data-status="WAITING CONFIRMATION" data-note="Seller mengirim barang atau jasa, buyer memeriksa kesesuaian transaksi.">4. Seller Delivery</button>
+            <button data-status="COMPLETED" data-note="Buyer mengonfirmasi barang aman. Dana dirilis ke balance seller dan bisa withdraw.">5. Release Fund</button>
+            <button data-status="DISPUTE REVIEW" data-note="Jika ada masalah, buyer/seller upload bukti dan admin menentukan refund atau release dana.">6. Dispute</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <script>
+    document.querySelectorAll('.flow button').forEach(btn=>btn.onclick=()=>{document.querySelectorAll('.flow button').forEach(b=>b.classList.remove('on'));btn.classList.add('on');status.textContent=btn.dataset.status;note.textContent=btn.dataset.note;});
+  </script>
+</body>
+</html>

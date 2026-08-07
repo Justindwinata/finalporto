@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CCTV Anomaly Demo - Justin Dwinata</title>
+  <link rel="stylesheet" href="../../css/style.css"/>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml"/>
+  <style>
+    body{cursor:auto}.demo{min-height:100vh;padding:7rem 0;background:radial-gradient(circle at 18% 0,rgba(215,220,227,.10),transparent 28%),var(--black)}.grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:1.25rem}.panel{background:var(--black-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.35rem;box-shadow:0 16px 46px rgba(8,8,9,.06)}.stack{display:grid;gap:.9rem}.field{display:grid;gap:.35rem}.field span{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.input,.select{padding:.8rem;border:1px solid var(--border);border-radius:var(--r-sm);background:var(--black-3);color:var(--white);font-family:var(--font-body)}.check{display:flex;align-items:center;gap:.6rem;color:var(--muted);font-size:.86rem}.cam{height:360px;border-radius:var(--r);border:1px solid var(--border-g);background:linear-gradient(135deg,#1a1d1a,#070807);position:relative;overflow:hidden}.cam::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:72px 72px}.zone{position:absolute;right:12%;top:18%;width:28%;height:56%;border:2px dashed rgba(215,220,227,.75);border-radius:12px}.person{position:absolute;left:22%;top:35%;width:74px;height:138px;border-radius:38px 38px 16px 16px;background:#3a3a36}.motion{position:absolute;left:18%;top:30%;width:150px;height:205px;border:2px solid var(--green);box-shadow:0 0 22px rgba(215,220,227,.25)}.motion.warn{border-color:#b42318;box-shadow:0 0 26px rgba(180,35,24,.28)}.job{display:flex;justify-content:space-between;gap:1rem;align-items:center;border-bottom:1px solid var(--border);padding:.75rem 0;color:var(--muted)}.job strong{color:var(--white)}.status{display:inline-flex;padding:.25rem .7rem;border-radius:99px;background:rgba(215,220,227,.08);border:1px solid var(--border-g);color:var(--green);font-family:var(--font-mono);font-size:.72rem}.status.warn{border-color:rgba(180,35,24,.34);color:#b42318;background:rgba(180,35,24,.07)}.report{display:grid;gap:.75rem;margin-top:1rem}.report-card{padding:.9rem;border:1px solid var(--border);border-radius:var(--r);background:var(--black-3)}.report-card h3{font-size:.9rem;color:var(--white);margin-bottom:.25rem}.report-card p{font-size:.78rem;color:var(--muted);line-height:1.55}.actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}@media(max-width:880px){.grid{grid-template-columns:1fr}.cam{height:300px}}
+  </style>
+</head>
+<body>
+  <main class="demo">
+    <div class="wrap">
+      <a href="/#work" class="btn btn-o" style="margin-bottom:2rem">Kembali ke Works</a>
+      <div class="sec-tag">CCTV Anomaly Detection Web App</div>
+      <h1 class="sec-title">Hybrid CCTV <em>Anomaly Detection.</em></h1>
+      <div class="grid">
+        <section class="panel">
+          <h2>Control Panel</h2>
+          <p class="about-text">Demo ini mengikuti project asli: upload video atau realtime source, sensitivity, threshold, human tracking, output job, report HTML, dan evidence CSV.</p>
+          <div class="stack">
+            <label class="field"><span>Video CCTV</span><input class="input" value="data/vandal.mp4" readonly></label>
+            <label class="field"><span>Realtime / Device Source</span><input class="input" value="0 / rtsp://camera.local/stream" readonly></label>
+            <label class="field"><span>Sensitivity</span><select class="select" id="sensitivity"><option>high</option><option>medium</option><option>low</option><option>very_low</option></select></label>
+            <label class="field"><span>Threshold</span><input class="input" id="threshold" value="0.62" readonly></label>
+            <label class="check"><input type="checkbox" id="tracking" checked> Human tracking aktif</label>
+          </div>
+          <div class="actions"><button class="btn btn-g" id="run">Mulai Deteksi Video</button><button class="btn btn-o" id="live">Simulasi Realtime</button></div>
+        </section>
+        <section class="panel">
+          <h2>Live Preview</h2>
+          <div class="cam"><div class="zone"></div><div class="person"></div><div class="motion" id="motion"></div></div>
+          <div class="job"><span>Job Status</span><strong><span class="status" id="jobState">READY</span></strong></div>
+          <div class="job"><span>Output Label</span><strong id="label">NORMAL</strong></div>
+          <div class="job"><span>Confidence</span><strong id="score">41%</strong></div>
+          <div class="job"><span>Reason</span><strong id="reason">baseline motion</strong></div>
+        </section>
+      </div>
+      <section class="panel" style="margin-top:1.25rem">
+        <div class="works-head" style="margin-bottom:1rem"><div><h2>Report Preview</h2><p class="about-text">Ringkasan ini meniru laporan HTML dan evidence log dari `hybrid_outputs/anomaly_reports`.</p></div><span class="status" id="reportStatus">HTML REPORT READY</span></div>
+        <div class="report" id="report">
+          <div class="report-card"><h3>Normal Monitoring</h3><p>Belum ada anomaly streak yang melewati threshold. Sistem tetap memantau motion area, optical flow, human track, dan alert zone.</p></div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script>
+    const anomalyCards=[
+      ['Vandalism / Perusakan fasilitas','Motion area meningkat di alert zone kanan. Optical-flow spike melewati threshold high dengan confidence 89%.'],
+      ['Theft / Pencurian','Track manusia bergerak cepat keluar zona. Persistent anomaly streak terdeteksi selama beberapa frame.'],
+      ['Restricted-area entry','Objek masuk polygon pengawasan lebih lama dari durasi aman. Evidence CSV menyimpan frame, score, dan reason.']
+    ];
+    function setAnomaly(mode){
+      motion.classList.add('warn');
+      jobState.className='status warn';
+      jobState.textContent=mode==='live'?'LIVE ANALYZING':'COMPLETED';
+      label.textContent='ANOMALY';
+      score.textContent=mode==='live'?'86%':'91%';
+      reason.textContent='motion + optical flow spike';
+      reportStatus.className='status warn';
+      reportStatus.textContent='ANOMALY REPORT GENERATED';
+      report.innerHTML=anomalyCards.map(([h,p])=>`<div class="report-card"><h3>${h}</h3><p>${p}</p></div>`).join('');
+    }
+    run.onclick=()=>setAnomaly('video');
+    live.onclick=()=>setAnomaly('live');
+    sensitivity.onchange=()=>{threshold.value=sensitivity.value==='very_low'?'0.38':sensitivity.value==='low'?'0.48':sensitivity.value==='medium'?'0.55':'0.62';};
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CCNA Quiz Demo - Justin Dwinata</title>
+  <link rel="stylesheet" href="../../css/style.css"/>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml"/>
+  <style>
+    body{cursor:auto}.demo{min-height:100vh;padding:7rem 0;background:var(--black)}.quiz{max-width:760px;background:var(--black-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.5rem}.opt{display:block;width:100%;text-align:left;margin:.7rem 0;padding:1rem;border:1px solid var(--border);border-radius:var(--r);background:var(--black-3);color:var(--white)}.opt.on{border-color:var(--green);color:var(--green)}.review{margin-top:1rem;color:var(--muted);line-height:1.7}
+  </style>
+</head>
+<body>
+  <main class="demo"><div class="wrap"><a href="/#work" class="btn btn-o" style="margin-bottom:2rem">Kembali ke Works</a><div class="sec-tag">Static Flask Demo</div><h1 class="sec-title">Quiz Generator <em>CCNA.</em></h1><section class="quiz"><p class="about-text" id="progress">Soal 1 dari 3</p><h2 id="q"></h2><div id="opts"></div><button class="btn btn-g" id="next">Jawab</button><div class="review" id="review"></div></section></div></main>
+  <script>
+    const qs=[{q:'Apa fungsi utama router?',o:['Menghubungkan jaringan berbeda','Menyimpan file','Memberi daya perangkat'],a:0},{q:'Port default HTTP adalah?',o:['22','80','443'],a:1},{q:'Subnet mask /24 setara dengan?',o:['255.255.0.0','255.255.255.0','255.255.255.252'],a:1}];let i=0,sel=null,score=0,answers=[];
+    function render(){if(i>=qs.length){q.textContent='Skor akhir: '+score+'/'+qs.length;progress.textContent='Review jawaban';opts.innerHTML='';next.style.display='none';review.innerHTML=answers.map((x,n)=>'Soal '+(n+1)+': '+(x?'Benar':'Salah')).join('<br>');return;}progress.textContent='Soal '+(i+1)+' dari '+qs.length;q.textContent=qs[i].q;opts.innerHTML=qs[i].o.map((o,n)=>'<button class="opt" data-n="'+n+'">'+o+'</button>').join('');review.textContent='';sel=null;document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{document.querySelectorAll('.opt').forEach(x=>x.classList.remove('on'));b.classList.add('on');sel=+b.dataset.n;});}
+    next.onclick=()=>{if(sel===null){review.textContent='Pilih jawaban dulu.';return;}const ok=sel===qs[i].a;if(ok)score++;answers.push(ok);review.textContent=ok?'Benar.':'Salah. Jawaban benar: '+qs[i].o[qs[i].a];i++;setTimeout(render,650);};render();
+  </script>
+</body>
+</html>

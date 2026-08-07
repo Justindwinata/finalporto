@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio Project Demo - Justin Dwinata</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+  <style>
+    :root{color-scheme:dark;--bg:#050506;--panel:#101215;--panel2:#171a20;--line:rgba(237,240,244,.16);--text:#f7f8fb;--muted:#9aa1ab;--soft:#d7dce3;--good:#89f5c1;--warn:#ffd166;--bad:#ff7a90}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% -10%,rgba(215,220,227,.18),transparent 34%),var(--bg);color:var(--text);font-family:Inter,Geist,Arial,sans-serif;cursor:auto}a{color:inherit;text-decoration:none}.wrap{width:min(1180px,calc(100% - 34px));margin:auto}.topbar{position:sticky;top:0;z-index:10;background:rgba(5,5,6,.78);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.topbar-in{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:74px}.brand{font-weight:800;letter-spacing:.08em}.back{display:inline-flex;align-items:center;min-height:38px;padding:0 16px;border:1px solid var(--line);border-radius:999px;color:var(--soft);font-size:13px}.project-switch{display:flex;gap:8px;overflow-x:auto;padding:10px 0}.project-switch a{white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:var(--muted);font-size:12px}.project-switch a.active{background:var(--soft);color:#050506;font-weight:800}.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center;padding:72px 0 38px}.kicker{margin:0 0 14px;color:var(--soft);font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.hero h1{margin:0;font-size:clamp(42px,7vw,92px);line-height:.95;letter-spacing:0}.hero p{color:rgba(247,248,251,.72);font-size:18px;line-height:1.65}.hero-card{position:relative;min-height:420px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.025));overflow:hidden;padding:22px}.desktop-shot{position:absolute;left:24px;top:46px;width:72%;height:58%;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.26);background:#fff;box-shadow:0 28px 70px rgba(0,0,0,.42)}.desktop-shot img,.phone-shot img{width:100%;height:100%;object-fit:cover;display:block}.phone-shot{position:absolute;right:30px;bottom:32px;width:26%;height:66%;padding:10px 6px;border-radius:26px;background:linear-gradient(180deg,#f8fafc,#8e96a2 48%,#f7f8fb);box-shadow:0 22px 56px rgba(0,0,0,.45)}.phone-shot img{border-radius:18px}.demo-grid{display:grid;grid-template-columns:360px 1fr;gap:22px;padding:20px 0 90px}.panel{border:1px solid var(--line);border-radius:14px;background:rgba(16,18,21,.82);padding:20px}.panel h2{margin:0 0 14px;font-size:22px}.metric{display:grid;grid-template-columns:1fr auto;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);color:var(--muted)}.metric strong{color:var(--text)}.controls{display:grid;gap:10px;margin-top:18px}.btn{min-height:44px;border:0;border-radius:999px;background:var(--soft);color:#050506;font-weight:900;cursor:pointer}.btn.secondary{background:#20252d;color:var(--text);border:1px solid var(--line)}.stage-list{display:grid;gap:10px}.stage{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;padding:14px;border:1px solid var(--line);border-radius:12px;background:#11151b;color:var(--muted)}.stage b{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#262c35;color:var(--text);font-size:12px}.stage.done{border-color:rgba(137,245,193,.55);color:var(--text)}.stage.done b{background:var(--good);color:#062016}.workspace{display:grid;gap:18px}.result-card{min-height:290px;border-radius:16px;background:linear-gradient(180deg,#eef2f7,#bfc7d2);color:#070708;padding:24px;overflow:hidden}.result-head{display:flex;justify-content:space-between;gap:16px;align-items:start}.result-title{margin:0;font-size:32px;line-height:1.05}.status{border-radius:999px;padding:8px 12px;background:#070708;color:#f7f8fb;font-size:12px;font-weight:800}.mock-table{width:100%;border-collapse:collapse;margin-top:22px;font-size:14px}.mock-table th,.mock-table td{padding:12px;border-bottom:1px solid rgba(5,5,6,.12);text-align:left}.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.chip{border-radius:999px;padding:8px 12px;background:rgba(5,5,6,.1);font-weight:800}.log{min-height:120px;border:1px solid var(--line);border-radius:12px;background:#090b0e;padding:15px;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.6;white-space:pre-wrap}.selector-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.field{display:grid;gap:8px}.field span{color:var(--muted);font-size:12px}.field input,.field select{width:100%;min-height:40px;border:1px solid var(--line);border-radius:10px;background:#090b0e;color:var(--text);padding:0 12px}    .footer-note{padding:0 0 44px;color:var(--muted);font-size:13px;line-height:1.6}.demo-empty-thumb{display:grid;place-items:center;width:100%;height:100%;background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.02));color:var(--muted);font-size:12px}.demo-img-fallback{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(135deg,#1c1f25,#0b0c0e);color:var(--muted);font-size:12px;z-index:0}@media(max-width:900px){.hero,.demo-grid{grid-template-columns:1fr}.hero{padding:48px 0 24px;gap:18px}.hero h1{font-size:clamp(34px,9vw,52px)}.hero-card{min-height:330px;padding:18px}.desktop-shot{left:18px;top:34px;width:74%;height:54%}.phone-shot{right:18px;bottom:24px;width:30%;height:64%}.hero p{font-size:16px}.panel{padding:16px}.panel h2{font-size:18px;margin-bottom:10px}.selector-row{grid-template-columns:1fr}.result-card{padding:18px}.result-title{font-size:22px}.topbar-in{align-items:flex-start;flex-direction:column;padding:14px 0}.project-switch{width:100%}.btn{min-height:40px;font-size:13px}.metric{padding:10px 0}.stage{padding:10px;gap:8px}}@media(max-width:480px){.hero-card{min-height:280px}.desktop-shot{height:48%}.phone-shot{height:60%;width:32%}.topbar{padding:10px 0}.topbar-in{gap:10px}.wrap{width:calc(100% - 22px)}.panel{padding:14px}.metric strong{font-size:14px}.btn{padding:0 14px;font-size:12px}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-in">
+      <a class="brand" href="/">JD PORTFOLIO</a>
+      <a class="back" href="/#work">Kembali ke My Work</a>
+    </div>
+    <nav class="wrap project-switch" id="projectSwitch"></nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <p class="kicker" id="kicker"></p>
+        <h1 id="title"></h1>
+        <p id="summary"></p>
+        <div class="chips" id="tech"></div>
+      </div>
+      <div class="hero-card">
+        <div class="desktop-shot"><img id="desktopImage" alt="Landscape project thumbnail"/></div>
+        <div class="phone-shot"><img id="mobileImage" alt="Mobile project thumbnail"/></div>
+      </div>
+    </section>
+
+    <section class="demo-grid">
+      <aside class="panel">
+        <h2>Simulasi Workflow</h2>
+        <div id="metrics"></div>
+        <div class="controls">
+          <button class="btn" id="runBtn">Run Demo</button>
+          <button class="btn secondary" id="resetBtn">Reset</button>
+        </div>
+      </aside>
+
+      <section class="workspace">
+        <div class="panel">
+          <h2 id="workflowTitle">Alur Fitur</h2>
+          <div class="stage-list" id="stages"></div>
+        </div>
+
+        <div class="panel">
+          <h2 id="resultHeading">Preview Output</h2>
+          <div class="selector-row" id="fields"></div>
+          <div class="result-card" id="resultCard"></div>
+        </div>
+
+        <div class="panel">
+          <h2>Runtime Log</h2>
+          <div class="log" id="logBox">Demo siap dijalankan.</div>
+        </div>
+      </section>
+    </section>
+    <p class="footer-note">Demo ini adalah representasi statis dan interaktif untuk portfolio. Fungsinya dibuat mengikuti project asli, tetapi tidak menjalankan backend, model, kamera, database, pembayaran, atau layanan eksternal sungguhan.</p>
+  </main>
+
+  <script>
+    const projects = {
+      careerboost: {
+        title: "CareerBoost AI",
+        category: "Internship Readiness Platform",
+        summary: "Upload CV PDF, validasi file, ekstraksi teks, target criteria, ATS metadata, improvement guidance, saved history, dan HTML report.",
+        image: "/assets/project-thumbnails/careerboost-landscape.webp",
+        mobile: "/assets/project-thumbnails/careerboost-mobile.webp",
+        tech: ["React", "FastAPI", "SQLite", "PDF parsing", "HTML report"],
+        metrics: [["Upload", "PDF valid"], ["Extraction", "88% confidence"], ["Target", "Frontend Intern"], ["Report", "Ready"]],
+        fields: [["Target Role", "Frontend Intern"], ["Experience", "Student"], ["Focus", "React + API"]],
+        stages: ["Validate resume PDF", "Extract sections and skill signals", "Compare target criteria", "Generate deterministic improvement guidance", "Save analysis and open HTML report"],
+        outputTitle: "Resume readiness improved",
+        rows: [["ATS metadata", "Section headings readable", "Ready"], ["Target alignment", "React, TypeScript, API evidence", "Strong"], ["Next action", "Add quantified project impact", "Priority"]],
+        log: ["POST /upload menerima CV demo", "Parser menemukan Education, Skills, Projects", "Target alignment dihitung dari evidence eksplisit", "Report HTML standalone dibuat dari saved analysis"]
+      },
+      usahanaik: {
+        title: "UsahaNaik",
+        category: "Android UMKM Growth Planner",
+        summary: "Aplikasi Android local-first untuk setup profil UMKM, pencatatan keuangan, diagnosis bisnis, weekly plan, content planner, reminder, retrospective, dan business report.",
+        image: "/assets/project-thumbnails/usahanaik-landscape.webp",
+        mobile: "/assets/project-thumbnails/usahanaik-mobile.webp",
+        tech: ["Kotlin", "Jetpack Compose", "Room", "WorkManager", "MVVM"],
+        metrics: [["Demo Mode", "Dapur Rasa Nusantara"], ["Health Score", "74/100"], ["Weekly Plan", "6 tasks"], ["Reminder", "Active"]],
+        fields: [["Kategori", "Food & Beverage"], ["Revenue", "Rp18.000.000"], ["Goal", "Naik 20%"]],
+        stages: ["Create local business profile", "Record income and expense entries", "Run rule-based business diagnosis", "Generate weekly action plan", "Schedule content and reminders"],
+        outputTitle: "UMKM command center",
+        rows: [["Financial clarity", "Income and expense recorded", "Good"], ["Priority action", "Track daily sales menu", "High"], ["Content idea", "Behind-the-scenes kitchen prep", "Planned"]],
+        log: ["Room local database membaca profile aktif", "Financial calculator membuat KPI bulanan", "Diagnosis engine memberi health score", "WorkManager schedule reminder lokal"]
+      },
+      datapulse: {
+        title: "DataPulse",
+        category: "Messy CSV & Excel Cleaner",
+        summary: "Studio data cleaning deterministik untuk validasi file, deteksi struktur, profiling kualitas, cleaning preview, export CSV, saved sessions, templates, dan report HTML.",
+        image: "/assets/project-thumbnails/datapulse-landscape.webp",
+        mobile: "/assets/project-thumbnails/datapulse-mobile.webp",
+        tech: ["React", "FastAPI", "CSV/XLSX", "SQLite", "Rules engine"],
+        metrics: [["File", "messy_sales.csv"], ["Quality", "82%"], ["Issues", "7 found"], ["Export", "CSV ready"]],
+        fields: [["Delimiter", "Auto comma"], ["Rules", "5 selected"], ["Sheet", "Sales"]],
+        stages: ["Validate CSV/XLSX upload", "Detect delimiter, header, and preview rows", "Profile missing values and messy types", "Apply selected cleaning rules", "Download CSV and save HTML report"],
+        outputTitle: "Cleaned data preview",
+        rows: [["Missing tokens", "UNKNOWN, N/A normalized", "Fixed"], ["Duplicate rows", "2 records removed", "Fixed"], ["Date column", "YYYY-MM-DD standardized", "Fixed"]],
+        log: ["File validation passed under 10 MB", "Structure detector found header row", "Quality profiler marked high-missing columns", "Cleaning preview generated without modifying source file"]
+      },
+      campusinsight: {
+        title: "CampusInsight",
+        category: "Student Performance Analytics",
+        summary: "Dashboard akademik untuk CSV dan PDF transkrip dengan GPA summary, chart semester, grade distribution, course risk review, saved analysis, dan report HTML.",
+        image: "/assets/project-thumbnails/campusinsight-landscape.webp",
+        mobile: "/assets/project-thumbnails/campusinsight-mobile.webp",
+        tech: ["React", "FastAPI", "pypdf", "SQLite", "SVG charts"],
+        metrics: [["Source", "CSV/PDF"], ["GPA", "3.62"], ["Credits", "118 SKS"], ["Risk", "3 courses"]],
+        fields: [["Input", "academic_records.csv"], ["Mode", "Analyze"], ["Report", "HTML"]],
+        stages: ["Validate academic CSV or text PDF", "Normalize course and semester rows", "Calculate GPA and credit metrics", "Render charts and risk tables", "Save analysis and open report"],
+        outputTitle: "Academic analytics dashboard",
+        rows: [["Semester trend", "GPA stable above 3.50", "Strong"], ["Grade spread", "A/B dominant", "Healthy"], ["Risk review", "3 courses need attention", "Review"]],
+        log: ["Academic schema validated", "Transcript parser normalized course rows", "Analytics service calculated GPA summary", "Saved detail can reopen without re-upload"]
+      },
+      justber: {
+        title: "JustBer",
+        category: "Flutter Rekber / Escrow MVP",
+        summary: "MVP rekber Flutter: seller create contract room, buyer join token, chat transaksi, QRIS payment simulation, secured balance, release fund, withdraw, dispute, dan admin resolution.",
+        image: "/assets/project-thumbnails/justber-landscape.webp",
+        mobile: "/assets/project-thumbnails/justber-mobile.webp",
+        tech: ["Flutter", "Riverpod", "GoRouter", "Supabase", "QRIS"],
+        metrics: [["Room Token", "JB-4821"], ["Payment", "QRIS pending"], ["Escrow", "Secured"], ["Dispute", "Available"]],
+        fields: [["Role", "Seller"], ["Contract", "Keyboard custom"], ["Amount", "Rp850.000"]],
+        stages: ["Seller creates contract and room token", "Buyer joins room and chats", "Buyer pays through QRIS simulation", "Funds move to secured balance", "Buyer releases funds or opens dispute"],
+        outputTitle: "Escrow transaction room",
+        rows: [["Contract", "Keyboard custom", "Created"], ["Payment", "QRIS invoice generated", "Pending"], ["Secured balance", "Rp850.000 held", "Protected"]],
+        log: ["MockDatabase/Supabase boundary loaded", "Room token generated for buyer", "Payment service creates QRIS sandbox intent", "Release fund waits for buyer confirmation"]
+      },
+      quiz: {
+        title: "Quiz Generator CCNA",
+        category: "Flask Learning Tool",
+        summary: "Notebook Flask untuk generate 20 soal CCNA acak, radio button jawaban, feedback langsung, next question, skor akhir, dan review jawaban.",
+        image: "/assets/project-thumbnails/quiz-landscape.webp",
+        mobile: "/assets/project-thumbnails/quiz-mobile.webp",
+        tech: ["Python", "Flask", "Notebook", "HTML", "Quiz bank"],
+        metrics: [["Question Bank", "35 soal"], ["Session", "20 random"], ["Current", "1/3 demo"], ["Score", "0"]],
+        fields: [["Topic", "Routing"], ["Mode", "Practice"], ["Port", "5050"]],
+        stages: ["Generate random quiz session", "Show one question at a time", "Submit selected radio answer", "Display correct/incorrect feedback", "Render final score and answer review"],
+        outputTitle: "CCNA practice question",
+        rows: [["Question", "Apa fungsi utama router?", "Active"], ["Answer", "Menghubungkan jaringan berbeda", "Correct"], ["Feedback", "Router meneruskan paket antar network", "Shown"]],
+        log: ["Route /generate membuat sesi baru", "Route /quiz menampilkan soal pertama", "Route /submit mengecek jawaban", "Route /result menyiapkan laporan akhir"]
+      },
+      mermaidgenerate: {
+        title: "MermaidGenerate",
+        category: "AI Mermaid Diagram Generator",
+        summary: "AI generator untuk Mermaid Mind Map dan Venn Diagram dengan Qwen2.5-Coder, Gradio UI, dataset upload/validation, LoRA/QLoRA fine-tuning, adapter ZIP, dan preview render.",
+        image: "/assets/project-thumbnails/mermaidgenerate-landscape.webp",
+        mobile: "/assets/project-thumbnails/mermaidgenerate-mobile.webp",
+        tech: ["Python", "Gradio", "Transformers", "PyTorch", "LoRA"],
+        metrics: [["Model", "Qwen2.5-Coder"], ["Diagram", "Mindmap/Venn"], ["Dataset", "JSONL valid"], ["Adapter", "ZIP ready"]],
+        fields: [["Prompt", "AI learning roadmap"], ["Diagram", "mindmap"], ["Mode", "LoRA smoke"]],
+        stages: ["Load model and tokenizer", "Generate Mermaid code from prompt", "Repair syntax by diagram type", "Render iframe Mermaid preview", "Validate dataset and export adapter"],
+        outputTitle: "Generated Mermaid code",
+        rows: [["mindmap", "root((AI Roadmap))", "Valid"], ["branch", "Data, Model, Evaluation", "Rendered"], ["adapter", "outputs/adapters/demo.zip", "Ready"]],
+        log: ["Gradio Blocks UI opened", "Prompt template selected mindmap mode", "Postprocessor extracted first valid diagram", "Mermaid iframe preview rendered SVG"]
+      },
+      cctv: {
+        title: "CCTV Anomaly Detection",
+        category: "Computer Vision Monitoring",
+        summary: "Hybrid CCTV detector untuk webcam, video, atau RTSP dengan motion area, optical flow, sudden spike, optional autoencoder, zone tracking, evidence frames, CSV log, dan report HTML.",
+        image: "/assets/project-thumbnails/cctv-landscape.webp",
+        mobile: "/assets/project-thumbnails/cctv-mobile.webp",
+        tech: ["Python", "OpenCV", "Flask", "Optical Flow", "HTML report"],
+        metrics: [["Source", "cctv.mp4"], ["Sensitivity", "High"], ["Status", "ANOMALY"], ["Score", "0.87"]],
+        fields: [["Mode", "Upload video"], ["Zone", "Entrance"], ["Tracking", "Human optional"]],
+        stages: ["Upload video or select realtime source", "Process frames with motion and optical flow", "Score anomaly threshold", "Save evidence frames and CSV log", "Open HTML anomaly report"],
+        outputTitle: "Anomaly event timeline",
+        rows: [["Frame 589", "Motion spike near entrance", "High"], ["Frame 652", "Dominant region changed", "Medium"], ["Report", "HTML evidence generated", "Ready"]],
+        log: ["Video source accepted", "Optical-flow score exceeded threshold", "Evidence frame saved locally", "Report generator grouped anomaly cards"]
+      },
+      jobtrackr: {
+        title: "JobTrackr",
+        category: "Job Discovery & Application Tracker",
+        summary: "Career platform untuk skill-role-location query builder, safe external job links, saved opportunities CRUD, application tracker analytics, pipeline, deadline review, dan progress report.",
+        image: "/assets/project-thumbnails/jobtrackr-landscape.webp",
+        mobile: "/assets/project-thumbnails/jobtrackr-mobile.webp",
+        tech: ["React", "FastAPI", "SQLite", "Tracker analytics", "HTML report"],
+        metrics: [["Skills", "React, SQL"], ["Boards", "5 links"], ["Saved", "4 opportunities"], ["Pipeline", "Interview"]],
+        fields: [["Role", "Frontend Developer"], ["Location", "Jakarta"], ["Priority", "High"]],
+        stages: ["Build skill-role-location search query", "Open safe external job-board links", "Save opportunity manually", "Update application status and notes", "Generate tracker analytics and HTML report"],
+        outputTitle: "Application tracker summary",
+        rows: [["LinkedIn search", "Manual external link", "Ready"], ["Saved opportunity", "Frontend Intern", "Applied"], ["Deadline", "2026-08-04", "Upcoming"]],
+        log: ["Recommendation endpoint generated board links", "No scraping or automated apply performed", "Saved Opportunities loaded from SQLite", "Report rendered from tracker analytics"]
+      },
+      tokopintar: {
+        title: "Toko Pintar",
+        category: "Spring Boot Product Management",
+        summary: "Aplikasi manajemen produk toko berbasis Spring Boot, Thymeleaf, JPA, dan MySQL dengan login admin, dashboard, CRUD produk, validasi duplikat, filter, status, dan restock priority.",
+        image: "/assets/project-thumbnails/tokopintar-landscape.webp",
+        mobile: "/assets/project-thumbnails/tokopintar-mobile.webp",
+        tech: ["Java", "Spring Boot", "Thymeleaf", "JPA", "MySQL"],
+        metrics: [["Admin", "Logged in"], ["Produk", "24 item"], ["Restock", "5 priority"], ["Filter", "Active"]],
+        fields: [["Produk", "Keyboard Mechanical"], ["Harga", "Rp450.000"], ["Stok", "8"]],
+        stages: ["Admin logs in through interceptor-protected route", "Dashboard summarizes inventory", "Create, edit, delete product records", "Validate duplicate product names", "Filter/search and review restock priorities"],
+        outputTitle: "Inventory dashboard",
+        rows: [["Keyboard Mechanical", "Rp450.000", "Stok 8"], ["Mouse Wireless", "Rp175.000", "Stok 14"], ["USB Hub", "Rp95.000", "Restock"]],
+        log: ["LoginInterceptor protects dashboard", "ProdukService validates duplicate entries", "ProdukRepository persists product records", "DashboardController calculates restock priority"]
+      }
+    };
+
+    const order = ["careerboost","usahanaik","datapulse","campusinsight","justber","quiz","mermaidgenerate","cctv","jobtrackr","tokopintar"];
+    const params = new URLSearchParams(location.search);
+    const key = projects[params.get("project")] ? params.get("project") : "careerboost";
+    const project = projects[key];
+    const state = { running: false };
+
+    function renderNav(){
+      projectSwitch.innerHTML = order.map(id => `<a class="${id===key ? "active" : ""}" href="?project=${id}">${projects[id].title}</a>`).join("");
+    }
+    function renderStatic(){
+      document.title = `${project.title} Demo - Justin Dwinata`;
+      kicker.textContent = project.category;
+      title.textContent = project.title;
+      summary.textContent = project.summary;
+      desktopImage.src = project.image;
+      desktopImage.onerror = () => {
+        desktopImage.parentElement.innerHTML = '<div class="demo-img-fallback">Image not available</div>';
+      };
+      mobileImage.src = project.mobile;
+      mobileImage.onerror = () => {
+        mobileImage.parentElement.innerHTML = '<div class="demo-img-fallback">Image not available</div>';
+      };
+      tech.innerHTML = project.tech.map(item => `<span class="chip">${item}</span>`).join("");
+      metrics.innerHTML = project.metrics.map(([label,value]) => `<div class="metric"><span>${label}</span><strong>${value}</strong></div>`).join("");
+      fields.innerHTML = project.fields.map(([label,value]) => `<label class="field"><span>${label}</span><input value="${value}" aria-label="${label}"/></label>`).join("");
+      renderStages(0);
+      renderResult(false);
+      logBox.textContent = "Demo siap dijalankan.";
+    }
+    function renderStages(doneCount){
+      stages.innerHTML = project.stages.map((step,index)=>`<div class="stage ${index < doneCount ? "done" : ""}"><b>${index+1}</b><span>${step}</span></div>`).join("");
+    }
+    function renderResult(done){
+      resultCard.innerHTML = `
+        <div class="result-head">
+          <h3 class="result-title">${project.outputTitle}</h3>
+          <span class="status">${done ? "SIMULATION COMPLETE" : "READY"}</span>
+        </div>
+        <table class="mock-table">
+          <thead><tr><th>Item</th><th>Detail</th><th>Status</th></tr></thead>
+          <tbody>${project.rows.map(row => `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${done ? row[2] : "Waiting"}</td></tr>`).join("")}</tbody>
+        </table>
+        <div class="chips">${project.tech.slice(0,3).map(item => `<span class="chip">${item}</span>`).join("")}</div>
+      `;
+    }
+    function runDemo(){
+      if(state.running) return;
+      state.running = true;
+      logBox.textContent = "";
+      project.log.forEach((line,index)=>{
+        setTimeout(()=>{
+          renderStages(index + 1);
+          logBox.textContent += `> ${line}\n`;
+          if(index === project.log.length - 1){
+            renderStages(project.stages.length);
+            renderResult(true);
+            state.running = false;
+          }
+        }, 450 * (index + 1));
+      });
+    }
+    function resetDemo(){
+      state.running = false;
+      renderStages(0);
+      renderResult(false);
+      logBox.textContent = "Demo direset dan siap dijalankan ulang.";
+    }
+    runBtn.addEventListener("click", runDemo);
+    resetBtn.addEventListener("click", resetDemo);
+    renderNav();
+    renderStatic();
+  </script>
+</body>
+</html>

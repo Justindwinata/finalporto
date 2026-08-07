@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pneumonia Detection Demo - Justin Dwinata</title>
+  <link rel="stylesheet" href="../../css/style.css"/>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml"/>
+  <style>
+    body{cursor:auto}.demo{min-height:100vh;padding:7rem 0;background:radial-gradient(circle at 20% 0,rgba(215,220,227,.12),transparent 30%),var(--black)}.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}.panel{background:var(--black-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.5rem}.xray{aspect-ratio:1;border-radius:var(--r);border:1px solid var(--border-g);background:radial-gradient(circle at 50% 38%,rgba(255,255,255,.42),transparent 11%),radial-gradient(ellipse at 38% 52%,rgba(255,255,255,.18),transparent 25%),radial-gradient(ellipse at 62% 52%,rgba(255,255,255,.18),transparent 25%),linear-gradient(135deg,#161616,#050505);position:relative;overflow:hidden}.heat.on::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 62% 48%,rgba(250,204,21,.55),transparent 17%),radial-gradient(circle at 58% 56%,rgba(239,68,68,.55),transparent 18%);mix-blend-mode:screen}.result{font-size:2rem;color:var(--green);font-family:var(--font-display);margin:.7rem 0}.meter{height:8px;background:var(--black-3);border-radius:99px;overflow:hidden}.meter span{display:block;height:100%;width:0;background:var(--green);transition:width .6s}.actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}@media(max-width:800px){.demo-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="demo"><div class="wrap"><a href="/#work" class="btn btn-o" style="margin-bottom:2rem">Kembali ke Works</a><div class="sec-tag">Static AI Demo</div><h1 class="sec-title">Pneumonia Detection <em>Web App.</em></h1><div class="demo-grid"><section class="panel"><h2>Simulasi Upload X-Ray</h2><p class="about-text">Demo ini tidak menjalankan model asli. Tujuannya memperlihatkan alur UI: upload, prediksi, confidence, laporan, dan Grad-CAM dummy.</p><div class="xray" id="xray"></div><div class="actions"><button class="btn btn-g" id="normal">Coba Normal</button><button class="btn btn-o" id="pneu">Coba Pneumonia</button><button class="btn btn-o" id="heat">Toggle Grad-CAM</button></div></section><section class="panel"><h2>Hasil Deteksi</h2><div class="result" id="label">Menunggu input</div><p class="about-text" id="report">Pilih salah satu contoh untuk melihat laporan hasil deteksi.</p><div class="meter"><span id="bar"></span></div><p class="about-text" id="score" style="margin-top:.8rem">Confidence: 0%</p></section></div></div></main>
+  <script>
+    const label=document.getElementById('label'),report=document.getElementById('report'),bar=document.getElementById('bar'),score=document.getElementById('score'),xray=document.getElementById('xray');
+    function setResult(name,pct,text){label.textContent=name;report.textContent=text;bar.style.width=pct+'%';score.textContent='Confidence: '+pct+'%';}
+    normal.onclick=()=>setResult('Normal',91,'Tidak terlihat pola opasitas dominan pada simulasi ini. Tetap perlu validasi tenaga medis untuk konteks nyata.');
+    pneu.onclick=()=>setResult('Pneumonia',87,'Simulasi model menandai area paru kanan sebagai region mencurigakan. Grad-CAM membantu menjelaskan area fokus prediksi.');
+    heat.onclick=()=>xray.classList.toggle('heat');
+  </script>
+</body>
+</html>
