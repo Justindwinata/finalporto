@@ -1,0 +1,43 @@
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .navbar,
+  .hero-scroll-hint,
+  .hero-background,
+  .hamburger,
+  .nav-overlay,
+  .load-more-btn {
+    display: none !important;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 2rem 0;
+  }
+
+  section {
+    padding: 2rem 0 !important;
+    page-break-inside: avoid;
+  }
+
+  .project-card,
+  .skill-card,
+  .cert-card,
+  .timeline-content {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  a {
+    text-decoration: underline;
+    color: #000 !important;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+}
