@@ -6,13 +6,27 @@ import { config } from "@/lib/config";
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduceMotion(mediaQuery.matches);
+    const handler = (e: MediaQueryListEvent) => setReduceMotion(e.matches);
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const target = e.currentTarget.getAttribute("href");
     if (target?.startsWith("#")) {
       e.preventDefault();
       const element = document.querySelector(target);
-      element?.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (reduceMotion) {
+        element?.scrollIntoView({ block: "start" });
+      } else {
+        element?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
       setMobileOpen(false);
     }
   };
@@ -36,14 +50,19 @@ export default function Navbar() {
       if (el) observer.observe(el);
     });
 
-    return () => observer.disconnect();
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
     <>
-      <nav className="navbar">
+      <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
         <div className="navbar-container">
-          <a href="#home" className="navbar-logo" onClick={handleNavClick}>
+          <a href="#home" className="navbar-logo" onClick={handleNavClick} aria-label="Go to top">
             JD
           </a>
           <div className={`navbar-menu ${mobileOpen ? "open" : ""}`}>
@@ -105,7 +124,8 @@ export default function Navbar() {
           </div>
           <button
             className="hamburger"
-            aria-label="Toggle menu"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             <span className={mobileOpen ? "bar open" : "bar"}></span>
