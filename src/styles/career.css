@@ -1,33 +1,36 @@
-.career {
-  padding: 6rem 2rem;
-  background: linear-gradient(180deg, transparent 0%, var(--surface) 50%, transparent 100%);
-}
-
-.career-container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.timeline {
+.timeline-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  transition: all 0.3s ease;
   position: relative;
-  padding: 2rem 0;
-  margin-top: 3rem;
+  overflow: hidden;
 }
 
-.timeline::before {
+.timeline-content::before {
   content: '';
   position: absolute;
-  left: 30px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--accent), transparent);
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, var(--accent), transparent);
+  border-radius: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
 }
 
-.timeline-item {
-  position: relative;
-  padding-left: 100px;
-  margin-bottom: 3rem;
+.timeline-content:hover::before {
+  opacity: 0.3;
+}
+
+.timeline-content:hover {
+  border-color: var(--accent);
+  background: var(--surface-strong);
+  transform: translateX(10px);
+  box-shadow: 0 10px 30px rgba(215, 220, 227, 0.15);
 }
 
 .timeline-marker {
@@ -40,19 +43,12 @@
   border: 2px solid var(--bg);
   border-radius: 50%;
   box-shadow: 0 0 20px var(--glow);
-}
-
-.timeline-content {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  padding: 2rem;
   transition: all 0.3s ease;
 }
 
-.timeline-content:hover {
-  border-color: var(--accent);
-  background: var(--surface-strong);
+.timeline-item:hover .timeline-marker {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px var(--glow);
 }
 
 .timeline-header {
@@ -105,6 +101,12 @@
   font-size: 0.75rem;
   color: var(--text-muted);
   font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover .tech-badge {
+  background: var(--accent);
+  color: var(--bg);
 }
 
 @media (max-width: 768px) {
