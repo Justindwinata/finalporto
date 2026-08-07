@@ -1,0 +1,79 @@
+/* CSS Variables for dark theme */
+:root {
+  --bg: #050506;
+  --surface: rgba(255, 255, 255, 0.045);
+  --surface-strong: rgba(255, 255, 255, 0.075);
+  --text: #edf0f4;
+  --text-muted: #9aa1ab;
+  --accent: #d7dce3;
+  --accent-strong: #f7f8fb;
+  --border: rgba(235, 238, 244, 0.18);
+  --glow: rgba(215, 220, 227, 0.24);
+  --accent-bg: rgba(215, 220, 227, 0.1);
+  --accent-bg-strong: rgba(215, 220, 227, 0.15);
+  --font-fallback: system-ui, -apple-system, sans-serif;
+}
+
+/* High contrast mode */
+@media (forced-colors: active) {
+  :root {
+    --accent: Highlight;
+    --accent-strong: Highlight;
+    --border: Highlight;
+    --surface: Highlight;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --bg: #000000;
+    --text: #ffffff;
+    --surface: rgba(255, 255, 255, 0.1);
+    --accent: #00ffff;
+    --border: #00ffff;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #050506;
+    --surface: rgba(255, 255, 255, 0.045);
+    --surface-strong: rgba(255, 255, 255, 0.075);
+    --text: #edf0f4;
+    --text-muted: #9aa1ab;
+    --accent: #d7dce3;
+    --accent-strong: #f7f8fb;
+    --border: rgba(235, 238, 244, 0.18);
+    --glow: rgba(215, 220, 227, 0.24);
+    --accent-bg: rgba(215, 220, 227, 0.1);
+  }
+}
+
+/* Light mode fallback */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #ffffff;
+    --surface: rgba(0, 0, 0, 0.02);
+    --surface-strong: rgba(0, 0, 0, 0.03);
+    --text: #1a1a1a;
+    --text-muted: #666666;
+    --accent: #0077cc;
+    --accent-strong: #0099dd;
+    --border: rgba(0, 0, 0, 0.1);
+    --glow: rgba(0, 119, 204, 0.15);
+  }
+}
