@@ -11,11 +11,12 @@ export default function Hero() {
           <div className="hero-intro">
             <span className="hero-greeting">Hello! I'm</span>
             <h1 className="hero-title">
-              {config.developer.fullName}
+              <span className="hero-title-line">{config.developer.fullName}</span>
             </h1>
           </div>
           <div className="hero-subtitle">
             <p className="hero-tagline">{config.developer.title}</p>
+            <span className="hero-divider">•</span>
             <p className="hero-location">{config.developer.location}</p>
           </div>
           <p className="hero-description">
@@ -37,6 +38,10 @@ export default function Hero() {
               Get in Touch
             </a>
           </div>
+        </div>
+        <div className="hero-scroll-hint">
+          <span>Scroll</span>
+          <div className="scroll-arrow"></div>
         </div>
         <div className="hero-background">
           <div className="hero-glow-1"></div>
