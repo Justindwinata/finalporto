@@ -2,16 +2,17 @@
 
 import { config } from "@/lib/config";
 import "@/styles/about.css";
+import ScrollFade from "./ScrollFade";
 
 export default function About() {
   return (
     <section className="about" id="about">
       <div className="about-container">
-        <div className="section-header">
+        <ScrollFade className="section-header" delay={0}>
           <h2>About Me</h2>
           <span className="header-accent">Who I am</span>
-        </div>
-        <div className="about-content">
+        </ScrollFade>
+        <ScrollFade className="about-content" delay={0.1}>
           <div className="about-text">
             <p className="about-intro">
               Hi, I am Justin Dwinata, an Informatics student who enjoys turning
@@ -26,7 +27,7 @@ export default function About() {
               <span className="highlight-badge">Open to IT Internship</span>
             </div>
           </div>
-        </div>
+        </ScrollFade>
       </div>
     </section>
   );
