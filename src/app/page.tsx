@@ -1,27 +1,23 @@
-"use client";
-
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Skills from "@/components/Skills";
-import Career from "@/components/Career";
+import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
-import Achievements from "@/components/Achievements";
+import Skills from "@/components/Skills";
+import Certificates from "@/components/Certificates";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import BackToTop from "@/components/BackToTop";
-import "@/styles/back-to-top.css";
 
 export default function Home() {
   return (
-    <main>
+    <main className="relative">
       <Navbar />
       <Hero />
       <About />
-      <Skills />
-      <Career />
+      <Experience />
       <Projects />
-      <Achievements />
+      <Skills />
+      <Certificates />
       <Contact />
       <Footer />
     </main>

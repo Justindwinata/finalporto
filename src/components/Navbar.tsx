@@ -1,140 +1,191 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { config } from "@/lib/config";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaGithub, FaLinkedin, FaWhatsapp, FaInstagram, FaBars, FaTimes } from "react-icons/fa";
+import { HiMail } from "react-icons/hi";
+import { navItems, developer } from "@/lib/data";
+
+const socialIcons = {
+  GitHub: FaGithub,
+  LinkedIn: FaLinkedin,
+  Email: HiMail,
+  WhatsApp: FaWhatsapp,
+  Instagram: FaInstagram,
+};
+
+const socialLinks = [
+  { platform: "GitHub", url: "https://github.com/Justindwinata" },
+  { platform: "LinkedIn", url: "https://linkedin.com/in/justindwinata" },
+  { platform: "Email", url: `mailto:${developer.email}` },
+  { platform: "WhatsApp", url: "https://wa.me/6282280004235" },
+  { platform: "Instagram", url: "https://instagram.com/justindwnt" },
+];
 
 export default function Navbar() {
-  const [activeSection, setActiveSection] = useState("home");
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [reduceMotion, setReduceMotion] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduceMotion(mediaQuery.matches);
-    const handler = (e: MediaQueryListEvent) => setReduceMotion(e.matches);
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
-  }, []);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const target = e.currentTarget.getAttribute("href");
-    if (target?.startsWith("#")) {
-      e.preventDefault();
-      const element = document.querySelector(target);
-      if (reduceMotion) {
-        element?.scrollIntoView({ block: "start" });
-      } else {
-        element?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-      setMobileOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    const sections = ["home", "about", "career", "projects", "achievements", "contact"];
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+      const sections = ["about", "experience", "projects", "skills", "certificates", "contact"];
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            setActiveSection(id);
+            break;
           }
         }
-      },
-      { threshold: 0.3, rootMargin: "-80px 0px 0px 0px" }
-    );
-
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("scroll", handleScroll);
+      }
     };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleClick = (id: string) => {
+    setMobileOpen(false);
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <>
-      <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
-        <div className="navbar-container">
-          <a href="#home" className="navbar-logo" onClick={handleNavClick} aria-label="Go to top">
-            JD
-          </a>
-          <div className={`navbar-menu ${mobileOpen ? "open" : ""}`}>
-            <ul className="nav-list">
-              <li>
-                <a
-                  href="#about"
-                  className={activeSection === "about" ? "active" : ""}
-                  onClick={handleNavClick}
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? "bg-background/80 backdrop-blur-xl border-b border-border/50 py-3" : "bg-transparent py-5"
+        }`}
+      >
+        <nav className="section-container flex items-center justify-between">
+          <motion.a
+            href="#top"
+            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center gap-2 text-xl font-bold"
+          >
+            <span className="text-accent">J</span>
+            <span className="text-text">D</span>
+            <span className="text-xs text-text-secondary font-mono hidden sm:inline">.dev</span>
+          </motion.a>
+
+          <ul className="hidden lg:flex items-center gap-8">
+            {navItems.map((item) => (
+              <li key={item.id}>
+                <button
+                  onClick={() => handleClick(item.id)}
+                  className={`relative text-sm font-medium transition-colors hover:text-accent ${
+                    activeSection === item.id ? "text-accent" : "text-text-secondary"
+                  }`}
                 >
-                  About
-                </a>
+                  {item.label}
+                  {activeSection === item.id && (
+                    <motion.span
+                      layoutId="active-dot"
+                      className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-accent"
+                    />
+                  )}
+                </button>
               </li>
-              <li>
-                <a
-                  href="#career"
-                  className={activeSection === "career" ? "active" : ""}
-                  onClick={handleNavClick}
+            ))}
+          </ul>
+
+          <div className="hidden lg:flex items-center gap-3">
+            {socialLinks.slice(0, 3).map((social) => {
+              const Icon = socialIcons[social.platform as keyof typeof socialIcons];
+              return (
+                <motion.a
+                  key={social.platform}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-2 text-text-secondary hover:text-accent transition-colors"
+                  aria-label={social.platform}
                 >
-                  Career
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#projects"
-                  className={activeSection === "projects" ? "active" : ""}
-                  onClick={handleNavClick}
-                >
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#achievements"
-                  className={activeSection === "achievements" ? "active" : ""}
-                  onClick={handleNavClick}
-                >
-                  Achievements
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  className={activeSection === "contact" ? "active" : ""}
-                  onClick={handleNavClick}
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-            <a
-              href={config.contact.resume}
+                  <Icon size={18} />
+                </motion.a>
+              );
+            })}
+            <motion.a
+              href={developer.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="nav-resume"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-4 py-2 text-sm font-medium border border-accent text-accent rounded-full hover:bg-accent hover:text-background transition-colors"
             >
               Resume
-            </a>
+            </motion.a>
           </div>
+
           <button
-            className="hamburger"
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
             onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden p-2 text-text"
+            aria-label="Toggle menu"
           >
-            <span className={mobileOpen ? "bar open" : "bar"}></span>
-            <span className={mobileOpen ? "bar open" : "bar"}></span>
-            <span className={mobileOpen ? "bar open" : "bar"}></span>
+            {mobileOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
           </button>
-        </div>
-      </nav>
-      {mobileOpen && <div className="nav-overlay" onClick={() => setMobileOpen(false)}></div>}
+        </nav>
+      </motion.header>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-40 lg:hidden bg-background/95 backdrop-blur-xl pt-24"
+          >
+            <nav className="section-container flex flex-col gap-6">
+              {navItems.map((item, i) => (
+                <motion.button
+                  key={item.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  onClick={() => handleClick(item.id)}
+                  className="text-left text-2xl font-semibold text-text hover:text-accent transition-colors"
+                >
+                  {item.label}
+                </motion.button>
+              ))}
+              <div className="flex gap-4 mt-8">
+                {socialLinks.map((social) => {
+                  const Icon = socialIcons[social.platform as keyof typeof socialIcons];
+                  return (
+                    <a
+                      key={social.platform}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 text-text-secondary hover:text-accent border border-border rounded-full"
+                      aria-label={social.platform}
+                    >
+                      <Icon size={20} />
+                    </a>
+                  );
+                })}
+              </div>
+              <a
+                href={developer.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 px-6 py-3 text-center font-medium border border-accent text-accent rounded-full"
+              >
+                Download Resume
+              </a>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
