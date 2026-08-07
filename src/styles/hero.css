@@ -21,7 +21,7 @@
 }
 
 .hero-intro {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   overflow: hidden;
 }
 
@@ -40,13 +40,25 @@
   line-height: 1.1;
   color: var(--accent-strong);
   letter-spacing: -0.02em;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .hero-title-line {
   display: inline-block;
   animation: fadeInUp 1s ease forwards;
   animation-delay: 0.1s;
+  opacity: 0;
+}
+
+.hero-role {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 0.5rem;
+  min-height: 2.25rem;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.2s;
   opacity: 0;
 }
 
@@ -152,6 +164,7 @@
   animation: fadeInUp 1s ease forwards;
   animation-delay: 1s;
   opacity: 0;
+  z-index: 3;
 }
 
 .scroll-arrow {
@@ -196,6 +209,24 @@
   animation: float 10s ease-in-out infinite reverse;
 }
 
+.fade-in {
+  animation: roleFadeIn 0.4s ease forwards;
+}
+
+.fade-out {
+  animation: roleFadeOut 0.4s ease forwards;
+}
+
+@keyframes roleFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes roleFadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -226,6 +257,10 @@
 
   .hero-title {
     font-size: clamp(1.75rem, 6vw, 3rem);
+  }
+
+  .hero-role {
+    font-size: 1.25rem;
   }
 
   .hero-subtitle {
