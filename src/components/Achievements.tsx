@@ -19,12 +19,24 @@ export default function Achievements() {
         <div className="certificates-grid">
           {displayed.map((cert, idx) => (
             <ScrollFade key={idx} delay={idx * 0.05}>
-              <div className="cert-card">
-                <div className="cert-placeholder">
-                  <span className="cert-icon">📜</span>
+              <a
+                href={cert.image}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cert-card"
+              >
+                <img
+                  // eslint-disable-next-line @next/next/no-img-element
+                  src={cert.image}
+                  alt={cert.title}
+                  loading="lazy"
+                  className="cert-image"
+                />
+                <div className="cert-overlay">
+                  <span className="cert-view">View Certificate</span>
                 </div>
                 <h3 className="cert-title">{cert.title}</h3>
-              </div>
+              </a>
             </ScrollFade>
           ))}
         </div>
