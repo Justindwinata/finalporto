@@ -3,6 +3,7 @@
 import { config } from "@/lib/config";
 import "@/styles/achievements.css";
 import { useState } from "react";
+import ScrollFade from "./ScrollFade";
 
 export default function Achievements() {
   const [expanded, setExpanded] = useState(false);
@@ -11,18 +12,20 @@ export default function Achievements() {
   return (
     <section className="achievements" id="achievements">
       <div className="achievements-container">
-        <div className="section-header">
+        <ScrollFade className="section-header" delay={0}>
           <h2>Achievements</h2>
           <span className="header-accent">Certificates & Learning</span>
-        </div>
+        </ScrollFade>
         <div className="certificates-grid">
           {displayed.map((cert, idx) => (
-            <div key={idx} className="cert-card">
-              <div className="cert-placeholder">
-                <span className="cert-icon">📜</span>
+            <ScrollFade key={idx} delay={idx * 0.05}>
+              <div className="cert-card">
+                <div className="cert-placeholder">
+                  <span className="cert-icon">📜</span>
+                </div>
+                <h3 className="cert-title">{cert.title}</h3>
               </div>
-              <h3 className="cert-title">{cert.title}</h3>
-            </div>
+            </ScrollFade>
           ))}
         </div>
         {config.certificates.length > 4 && (
