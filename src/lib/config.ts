@@ -52,6 +52,7 @@ export const config = {
       title: "CareerBoost AI",
       category: "Internship Readiness Platform",
       technologies: "React, Vite, TypeScript, FastAPI, Python, SQLite, HTML Report",
+      demoUrl: "/demos/careerboost-ai-demo.html",
       description:
         "Platform analisis CV untuk kesiapan internship, dengan upload PDF, target alignment, ATS metadata, improvement guidance, riwayat lokal, dan report HTML.",
     },
@@ -61,6 +62,7 @@ export const config = {
       title: "UsahaNaik",
       category: "Android UMKM Growth Planner",
       technologies: "Kotlin, Jetpack Compose, Room, WorkManager, MVVM, Local-first",
+      demoUrl: "/demos/usahanaik-demo.html",
       description:
         "Aplikasi Android local-first untuk UMKM Indonesia dengan setup bisnis, finance tracking, health score, weekly plan, content planner, reminder, dan business report.",
     },
@@ -70,6 +72,7 @@ export const config = {
       title: "DataPulse",
       category: "Messy CSV & Excel Cleaner",
       technologies: "React, TypeScript, FastAPI, Python, SQLite, CSV/XLSX Processing",
+      demoUrl: "/demos/datapulse-demo.html",
       description:
         "Studio cleaning data untuk CSV/Excel dengan validasi upload, deteksi struktur, quality profiling, rule preview, export CSV, template, dan HTML report.",
     },
@@ -79,6 +82,7 @@ export const config = {
       title: "CampusInsight",
       category: "Student Performance Analytics",
       technologies: "React, TypeScript, FastAPI, Python, SQLite, PDF/CSV Analytics",
+      demoUrl: "/demos/campusinsight-demo.html",
       description:
         "Dashboard analisis akademik dari CSV dan PDF transkrip, berisi GPA summary, chart semester, risk review, saved analysis, dan report HTML.",
     },
@@ -88,6 +92,7 @@ export const config = {
       title: "JustBer",
       category: "Flutter Rekber / Escrow MVP",
       technologies: "Flutter, Dart, Riverpod, GoRouter, Supabase, QRIS, Realtime Chat",
+      demoUrl: "/demos/justber-demo-v2.html",
       description:
         "MVP rekber Flutter untuk contract room, buyer token, chat transaksi, simulasi QRIS, secured balance, release fund, withdraw, dan dispute.",
     },
@@ -97,6 +102,7 @@ export const config = {
       title: "Quiz Generator CCNA",
       category: "Flask Learning Tool",
       technologies: "Python, Flask, Jupyter Notebook, HTML, CSS, Quiz Logic",
+      demoUrl: "/demos/quiz-generator-ccna-demo.html",
       description:
         "Aplikasi kuis CCNA berbasis Flask notebook dengan generate soal acak, pilihan jawaban, feedback langsung, skor akhir, dan review jawaban.",
     },
@@ -106,6 +112,7 @@ export const config = {
       title: "MermaidGenerate",
       category: "AI Mermaid Diagram Generator",
       technologies: "Python, Gradio, Transformers, PyTorch, LoRA, QLoRA, Mermaid.js",
+      demoUrl: "/demos/mermaidgenerate-demo.html",
       description:
         "AI generator Mermaid Mind Map dan Venn Diagram dengan Qwen2.5-Coder, Gradio UI, dataset validation, LoRA/QLoRA, adapter export, dan preview render.",
     },
@@ -115,6 +122,7 @@ export const config = {
       title: "CCTV Anomaly Detection",
       category: "Computer Vision Monitoring",
       technologies: "Python, OpenCV, Flask, Optical Flow, Motion Detection, HTML Report",
+      demoUrl: "/demos/cctv-anomaly-detection-demo.html",
       description:
         "Deteksi anomali CCTV hybrid untuk webcam, video, atau RTSP dengan motion scoring, optical flow, evidence frame, CSV log, dan HTML report.",
     },
@@ -124,6 +132,7 @@ export const config = {
       title: "JobTrackr",
       category: "Job Discovery & Application Tracker",
       technologies: "React, TypeScript, FastAPI, Python, SQLite, HTML Report",
+      demoUrl: "/demos/jobtrackr-demo.html",
       description:
         "Platform job discovery dan application tracker dengan query builder, safe job-board links, saved opportunities, tracker analytics, pipeline, dan career report.",
     },
@@ -133,6 +142,7 @@ export const config = {
       title: "Toko Pintar",
       category: "Spring Boot Product Management",
       technologies: "Java, Spring Boot, Thymeleaf, Spring Data JPA, MySQL, NetBeans",
+      demoUrl: "/demos/toko-pintar-demo.html",
       description:
         "Aplikasi manajemen produk toko berbasis Spring Boot dengan login admin, dashboard, CRUD produk, validasi duplikat, filter, status, dan prioritas restock.",
     },

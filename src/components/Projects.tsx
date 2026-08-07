@@ -19,7 +19,7 @@ export default function Projects() {
         <div className="projects-grid">
           {displayed.map((project, idx) => (
             <ScrollFade key={project.id} delay={idx * 0.05}>
-              <div className="project-card">
+              <article className="project-card">
                 <div className="project-media">
                   <img
                     // eslint-disable-next-line @next/next/no-img-element
@@ -37,8 +37,17 @@ export default function Projects() {
                   </div>
                   <p className="project-desc">{project.description}</p>
                   <p className="project-tech">{project.technologies}</p>
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-demo-link"
+                  >
+                    View Demo
+                    <span className="arrow">→</span>
+                  </a>
                 </div>
-              </div>
+              </article>
             </ScrollFade>
           ))}
         </div>
