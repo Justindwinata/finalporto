@@ -1,0 +1,33 @@
+"use client";
+
+import { config } from "@/lib/config";
+import "@/styles/about.css";
+
+export default function About() {
+  return (
+    <section className="about" id="about">
+      <div className="about-container">
+        <div className="section-header">
+          <h2>About Me</h2>
+          <span className="header-accent">Who I am</span>
+        </div>
+        <div className="about-content">
+          <div className="about-text">
+            <p className="about-intro">
+              Hi, I am Justin Dwinata, an Informatics student who enjoys turning
+              technology ideas into usable digital products.
+            </p>
+            <p className="about-main">
+              {config.about.description}
+            </p>
+            <div className="about-highlights">
+              <span className="highlight-badge">Mercu Buana University</span>
+              <span className="highlight-badge">Informatics Student</span>
+              <span className="highlight-badge">Open to IT Internship</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
