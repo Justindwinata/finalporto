@@ -20,10 +20,21 @@ export default function Projects() {
           {displayed.map((project, idx) => (
             <ScrollFade key={project.id} delay={idx * 0.05}>
               <div className="project-card">
-                <div className="project-number">{String(idx + 1).padStart(2, '0')}</div>
+                <div className="project-media">
+                  <img
+                    // eslint-disable-next-line @next/next/no-img-element
+                    src={`/assets/project-thumbnails/${project.slug}-landscape.webp`}
+                    alt={project.title}
+                    loading="lazy"
+                    className="project-image"
+                  />
+                  <span className="project-category-pill">{project.category}</span>
+                </div>
                 <div className="project-info">
-                  <h3 className="project-title">{project.title}</h3>
-                  <p className="project-category">{project.category}</p>
+                  <div className="project-title-row">
+                    <h3 className="project-title">{project.title}</h3>
+                    <span className="project-number">{String(idx + 1).padStart(2, '0')}</span>
+                  </div>
                   <p className="project-desc">{project.description}</p>
                   <p className="project-tech">{project.technologies}</p>
                 </div>

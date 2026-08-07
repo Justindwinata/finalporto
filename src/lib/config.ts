@@ -48,6 +48,7 @@ export const config = {
   projects: [
     {
       id: 1,
+      slug: "careerboost",
       title: "CareerBoost AI",
       category: "Internship Readiness Platform",
       technologies: "React, Vite, TypeScript, FastAPI, Python, SQLite, HTML Report",
@@ -56,6 +57,7 @@ export const config = {
     },
     {
       id: 2,
+      slug: "usahanaik",
       title: "UsahaNaik",
       category: "Android UMKM Growth Planner",
       technologies: "Kotlin, Jetpack Compose, Room, WorkManager, MVVM, Local-first",
@@ -64,6 +66,7 @@ export const config = {
     },
     {
       id: 3,
+      slug: "datapulse",
       title: "DataPulse",
       category: "Messy CSV & Excel Cleaner",
       technologies: "React, TypeScript, FastAPI, Python, SQLite, CSV/XLSX Processing",
@@ -72,6 +75,7 @@ export const config = {
     },
     {
       id: 4,
+      slug: "campusinsight",
       title: "CampusInsight",
       category: "Student Performance Analytics",
       technologies: "React, TypeScript, FastAPI, Python, SQLite, PDF/CSV Analytics",
@@ -80,6 +84,7 @@ export const config = {
     },
     {
       id: 5,
+      slug: "justber",
       title: "JustBer",
       category: "Flutter Rekber / Escrow MVP",
       technologies: "Flutter, Dart, Riverpod, GoRouter, Supabase, QRIS, Realtime Chat",
@@ -88,6 +93,7 @@ export const config = {
     },
     {
       id: 6,
+      slug: "quiz",
       title: "Quiz Generator CCNA",
       category: "Flask Learning Tool",
       technologies: "Python, Flask, Jupyter Notebook, HTML, CSS, Quiz Logic",
@@ -96,6 +102,7 @@ export const config = {
     },
     {
       id: 7,
+      slug: "mermaidgenerate",
       title: "MermaidGenerate",
       category: "AI Mermaid Diagram Generator",
       technologies: "Python, Gradio, Transformers, PyTorch, LoRA, QLoRA, Mermaid.js",
@@ -104,6 +111,7 @@ export const config = {
     },
     {
       id: 8,
+      slug: "cctv",
       title: "CCTV Anomaly Detection",
       category: "Computer Vision Monitoring",
       technologies: "Python, OpenCV, Flask, Optical Flow, Motion Detection, HTML Report",
@@ -112,6 +120,7 @@ export const config = {
     },
     {
       id: 9,
+      slug: "jobtrackr",
       title: "JobTrackr",
       category: "Job Discovery & Application Tracker",
       technologies: "React, TypeScript, FastAPI, Python, SQLite, HTML Report",
@@ -120,6 +129,7 @@ export const config = {
     },
     {
       id: 10,
+      slug: "tokopintar",
       title: "Toko Pintar",
       category: "Spring Boot Product Management",
       technologies: "Java, Spring Boot, Thymeleaf, Spring Data JPA, MySQL, NetBeans",
