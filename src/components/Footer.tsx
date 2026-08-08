@@ -17,7 +17,9 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
           <p className="font-bold text-lg">{profile.name.split(" ")[0]}.dev</p>
-          <p className="text-sm text-muted">Building digital products with intention.</p>
+          <p className="text-sm text-muted">
+            Building digital products with intention.
+          </p>
         </div>
 
         <div className="flex gap-3">
@@ -38,7 +40,9 @@ export default function Footer() {
           })}
         </div>
 
-        <p className="text-sm text-muted">© {new Date().getFullYear()} {profile.name}</p>
+        <p className="text-sm text-muted">
+          © {new Date().getFullYear()} {profile.name}
+        </p>
       </div>
     </footer>
   );

@@ -2,7 +2,13 @@
 
 import { motion } from "framer-motion";
 import { profile, socialLinks } from "@/lib/data";
-import { FaGithub, FaLinkedin, FaEnvelope, FaWhatsapp, FaDownload } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaWhatsapp,
+  FaDownload,
+} from "react-icons/fa";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
   github: FaGithub,
@@ -15,7 +21,12 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 px-4 bg-card/50">
       <div className="max-w-6xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Contact</h2>
           <p className="text-muted">Let&apos;s connect</p>
         </motion.div>
@@ -42,16 +53,26 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-medium">{link.name}</p>
-                    <p className="text-sm text-muted">{link.url.replace(/^mailto:|^https?:\/\/(www\.)?/, "")}</p>
+                    <p className="text-sm text-muted">
+                      {link.url.replace(/^mailto:|^https?:\/\/(www\.)?/, "")}
+                    </p>
                   </div>
                 </motion.a>
               );
             })}
           </div>
 
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center p-8 rounded-xl border border-border bg-card">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center p-8 rounded-xl border border-border bg-card"
+          >
             <p className="text-muted mb-2">Prefer email?</p>
-            <a href={`mailto:${profile.email}`} className="text-2xl font-bold text-accent hover:underline">
+            <a
+              href={`mailto:${profile.email}`}
+              className="text-2xl font-bold text-accent hover:underline"
+            >
               {profile.email}
             </a>
           </motion.div>

@@ -7,7 +7,12 @@ export default function Skills() {
   return (
     <section id="skills" className="py-24 px-4 bg-card/50">
       <div className="max-w-6xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Skills</h2>
           <p className="text-muted">Technologies I work with</p>
         </motion.div>
@@ -26,7 +31,10 @@ export default function Skills() {
               <h3 className="font-bold mb-4">{skill.group}</h3>
               <div className="flex flex-wrap gap-2">
                 {skill.tools.map((tool) => (
-                  <span key={tool} className="px-3 py-1 text-sm rounded-full bg-bg border border-border hover:border-accent hover:text-accent transition-colors">
+                  <span
+                    key={tool}
+                    className="px-3 py-1 text-sm rounded-full bg-bg border border-border hover:border-accent hover:text-accent transition-colors"
+                  >
                     {tool}
                   </span>
                 ))}

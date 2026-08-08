@@ -4,14 +4,19 @@ export const profile = {
   location: "Indonesia",
   email: "Justindwinata0@gmail.com",
   bio: "Third-year Informatics student at Mercu Buana University with interests in Web Development, Data Science, and Application Development.",
-  intro: "Hi, I'm Justin — an Informatics student who turns ideas into working prototypes.",
+  intro:
+    "Hi, I'm Justin — an Informatics student who turns ideas into working prototypes.",
   availability: "Open to internships",
   resume: "/cv/CV-Justin-Dwinata.pdf",
 };
 
 export const socialLinks = [
   { name: "GitHub", url: "https://github.com/Justindwinata", icon: "github" },
-  { name: "LinkedIn", url: "https://linkedin.com/in/justindwinata", icon: "linkedin" },
+  {
+    name: "LinkedIn",
+    url: "https://linkedin.com/in/justindwinata",
+    icon: "linkedin",
+  },
   { name: "Email", url: "mailto:Justindwinata0@gmail.com", icon: "mail" },
   { name: "WhatsApp", url: "https://wa.me/6282280004235", icon: "message" },
 ];

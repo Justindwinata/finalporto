@@ -2,7 +2,15 @@
 
 import { motion } from "framer-motion";
 import { profile, socialLinks, navLinks } from "@/lib/data";
-import { FaGithub, FaLinkedin, FaEnvelope, FaWhatsapp, FaBars, FaTimes, FaDownload } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaWhatsapp,
+  FaBars,
+  FaTimes,
+  FaDownload,
+} from "react-icons/fa";
 import { useState, useEffect } from "react";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
@@ -28,16 +36,23 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${
-          scrolled ? "bg-bg/90 backdrop-blur-md border-b border-border" : "bg-transparent"
+          scrolled
+            ? "bg-bg/90 backdrop-blur-md border-b border-border"
+            : "bg-transparent"
         }`}
       >
         <nav className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <a href="#" className="font-bold text-lg">{profile.name.split(" ")[0]}.dev</a>
+          <a href="#" className="font-bold text-lg">
+            {profile.name.split(" ")[0]}.dev
+          </a>
 
           <ul className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="text-sm text-muted hover:text-fg transition-colors">
+                <a
+                  href={link.href}
+                  className="text-sm text-muted hover:text-fg transition-colors"
+                >
                   {link.label}
                 </a>
               </li>
@@ -45,7 +60,12 @@ export default function Navbar() {
           </ul>
 
           <div className="hidden md:flex items-center gap-3">
-            <a href={profile.resume} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 text-sm border border-accent text-accent rounded-lg hover:bg-accent hover:text-white transition-colors">
+            <a
+              href={profile.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 text-sm border border-accent text-accent rounded-lg hover:bg-accent hover:text-white transition-colors"
+            >
               <FaDownload size={14} /> Resume
             </a>
           </div>
@@ -74,7 +94,12 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a href={profile.resume} target="_blank" rel="noopener noreferrer" className="mt-4 flex items-center justify-center gap-2 px-4 py-3 border border-accent text-accent rounded-lg">
+            <a
+              href={profile.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 flex items-center justify-center gap-2 px-4 py-3 border border-accent text-accent rounded-lg"
+            >
               <FaDownload size={16} /> Download Resume
             </a>
           </nav>

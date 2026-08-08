@@ -7,7 +7,12 @@ export default function Certificates() {
   return (
     <section id="certificates" className="py-24 px-4">
       <div className="max-w-6xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Certificates</h2>
           <p className="text-muted">Learning milestones</p>
         </motion.div>
@@ -26,7 +31,12 @@ export default function Certificates() {
               whileHover={{ scale: 1.05 }}
               className="relative aspect-square rounded-xl overflow-hidden border border-border bg-card group"
             >
-              <img src={cert.image} alt={cert.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <img
+                src={cert.image}
+                alt={cert.title}
+                loading="lazy"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/40 to-transparent" />
               <div className="absolute bottom-3 left-3 right-3">
                 <p className="text-xs font-medium">{cert.title}</p>
